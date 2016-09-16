@@ -1,4 +1,4 @@
-# Git Definitions
+# Git Definitions --- Oiy! (something has changed...)
 
 **Instructions: ** Define each of the following Git concepts.
 
