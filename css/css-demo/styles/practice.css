@@ -12,3 +12,11 @@ section#contact-info p{
 .items {
 	font-size: .8em;
 }
+
+a:hover {
+	color: red;
+}
+
+ul>li {
+	color: blue;
+}
