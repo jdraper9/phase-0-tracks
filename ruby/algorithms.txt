@@ -1,0 +1,33 @@
+**Elevator algorithm**
+
+- Ask which floor button to press
+- If number is provided
+	- locate number on elevator panel
+	- press number button
+- Otherwise
+	- do nothing
+
+**Pasta algorithm**
+
+- Acquire 1 package of uncooked pasta, 1 jar of pasta sauce, 1 large pot, 1 source of water, 1 stove, 1 strainer, 1 bowl
+- Fill pot with water until it is 2/3 full
+- Place pot on stove
+- Turn on stove
+- Until water is boiling
+	- wait
+- Place uncooked pasta into pot
+- If directions are provided on pasta package for how long to cook
+	- wait until this amount of time has passed, stirring occasionally
+- Otherwise
+	- wait 7 minutes, stirring occasionally
+	- extract a single piece of pasta from the pot and eat it
+	- if the pasta sample is hard to chew
+		- wait another minute, then repeat the previous step
+	- otherwise
+		- continue to next steps
+- Turn stove off and remove pot
+- Pour contents of pot into strainer
+- Shake strainer to remove water from pasta
+- Pour contents of strainer into bowl
+- Pour pasta sauce into bowl
+- eat it
