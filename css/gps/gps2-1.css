@@ -1,0 +1,33 @@
+.column-1 {
+  display: inline-block;
+  width: 48%;
+}
+
+.column-2 {
+  display: inline-block;
+  width: 48%;
+  vertical-align: top;
+}
+
+header {
+  background-image: url(http://i.stack.imgur.com/sepyh.jpg);
+  color: white;
+  padding: 10px;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+}
+
+h2 {
+  font-family: impact;
+}
+
+article {
+  border: 2px solid black;
+}
+
+a:hover {
+  color: red;
+}
