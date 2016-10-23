@@ -129,6 +129,7 @@ end
 
 
 puts "Welcome to the Hangman Game!"
+puts "*Note: game is case sensitive"
 puts "Player 1: Please enter a word"
 target = gets.chomp
 new_game = Game.new(target)
