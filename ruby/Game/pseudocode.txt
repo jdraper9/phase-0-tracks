@@ -1,0 +1,77 @@
+---- Specifications ----
+
+* One user can enter a word (or phrase, if you would like your game to support that), and another user attempts to guess the word.
+* Guesses are limited, and the number of guesses available is related to the length of the word.
+* Repeated guesses do not count against the user.
+* The guessing player receives continual feedback on the current state of the word. So if the secret word is "unicorn", the user will start out seeing something like "_ _ _ _ _ _ _", which would become "_ _ _ c _ _ _" after the user enters a guess of "c".
+* The user should get a congratulatory message if they win, and a taunting message if they lose.
+
+
+---- brief overview ----
+
+Accept target_word from user 1, store it as instance variable in game class. Set guess_limit as length of target_word. Until guess_limit is reached, prompt user 2 for guess. Unless guess has already been entered (check an instance variable array of past guesses), add 1 to guess_count instance variable. Then, check if guess is equal to target_word. If it is, set end game and congratulate user. If it isn't, check if guess is a part of target_word. If include? returns true, reveal the letters of guess word and prompt again...
+
+---- Pseudocode ----
+
+- Create Game class with the following attr_reader values:
+	* guess_limit, guess_count, win, feedback (for rspec test)
+	and the following attr_accessor values:
+	* is_over
+- Define initialize method with these instance variables, which takes a parameter called target_word:
+	* target_word = argument
+	* guess_limit = target_word.length * 2
+	* guess_count = 0
+	* is_over = false
+	* win = false
+	* guess_history = []   #array of past guesses
+	* feedback = []       #array (similar to a hash) containing arrays within, which contain pairs of individual letters and a boolean
+
+- Define check_word method that checks if parameter (guess) is equal to target_word.
+	- Unless guess is within guess_history array
+		- Add one to guess_count
+		- Add guess to guess_history array
+	- if guess = target_word
+		- win = true
+		- is_over = true
+	- else
+		- return false
+
+- Define check_within method that checks if parameter (guess) is within target_word
+	- use include? on parameter to see if it is included in target_word
+
+- Define update_feedback method that updates feedback array. This method will only be called if check_within returns true, and accepts parameter guess
+
+## note: Since the feedback array contains pairs of arrays (a letter and a boolean), it is similar to a hash. Therefore I am referring to the letter as a key and the boolean as a value
+
+	- For each character in guess, check if this character is equal to a 'key' letter in feedback array (it should be because we already used check_within)
+	- When that character reaches the correct 'key', set it's value to true
+
+- Define print_feedback method that reads feedback array and prints letters which have been guessed by user
+	- Create an empty array called temp_array
+	- Iterate through feedback array, storing "_" in temp_array if a value is false or storing the key itself if a value is true
+	- Finally, join temp_array as a string (with spaces betwen chars) and return this value
+
+- User interface...
+	- Print "Welcome to the Hangman Game!"
+	- store response as variable called target
+	- create game instance with target as argument
+	- While is_over returns false
+		- Print "Please enter your guess. You have (guess_limit - guess_count) guesses remaining"
+		- store guess as new variable current_guess
+		- if check_word(current_guess) returns false
+			-if check_within returns true
+				- call update_feedback
+				- print "Correct letters guessed so far: " + print_feedback
+		- if guess_count = guess_limit
+			- is_over = true
+	- If win is true
+		- print "Contrats! You've won in #{guess_count} tries"
+	- else
+		- print "Too bad, you ran out of tries. Maybe next time?"
+
+
+
+
+
+
+
