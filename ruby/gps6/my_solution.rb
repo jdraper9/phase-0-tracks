@@ -1,11 +1,11 @@
 # Virus Predictor
 
-# I worked on this challenge [by myself, with: ].
-# We spent [#] hours on this challenge.
+# I worked on this challenge [by myself].
+# We spent [1] hour on this challenge.
 
 # EXPLANATION OF require_relative
-#
-#
+# Imports or includes code from another file into the current file.
+# require loads directly to the path you provide, whereas require_relative load a file relative to your file's current directory
 require_relative 'state_data'
 
 class VirusPredictor
@@ -16,14 +16,20 @@ class VirusPredictor
     @population_density = population_density
   end
 
+  # calls predicted_deaths and speed_of_spread
+  # nil
   def virus_effects
-    predicted_deaths(@population_density, @population, @state)
-    speed_of_spread(@population_density, @state)
+    predicted_deaths
+    speed_of_spread
   end
 
   private
 
-  def predicted_deaths(population_density, population, state)
+  # takes 3 args
+  # reads population density and sets number of deaths based on popluation density
+  # prints info about how many people will die in this state
+  # returns nil
+  def predicted_deaths
     # predicted deaths is solely based on population density
     if @population_density >= 200
       number_of_deaths = (@population * 0.4).floor
@@ -41,7 +47,12 @@ class VirusPredictor
 
   end
 
-  def speed_of_spread(population_density, state) #in months
+  # takes two args
+  # sets default speed to 0
+  # based on pop. density, adds to the speed variable
+  # prints statement about number of months it will take for disease to spread
+  # nil
+  def speed_of_spread #in months
     # We are still perfecting our formula here. The speed is also affected
     # by additional factors we haven't added into this functionality.
     speed = 0.0
@@ -68,6 +79,17 @@ end
 
 # DRIVER CODE
  # initialize VirusPredictor for each state
+
+# iterate through data from STATE_DATA
+# STATE_DATA.each do |key, value|
+#   # create new instance of VirusPredictor for each state
+#   new_instance = VirusPredictor.new(key, value[:population_density], value[:population])
+#   # call #virus_effects for each instance
+#   new_instance.virus_effects
+# end
+
+
+
 
 
 alabama = VirusPredictor.new("Alabama", STATE_DATA["Alabama"][:population_density], STATE_DATA["Alabama"][:population])
