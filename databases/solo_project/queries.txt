@@ -1,0 +1,74 @@
+SQL Queries:
+
+1. Display the information in one table (either table is fine).
+
+	Input:
+		SELECT * FROM media;
+	Output:
+		1|Pulp Fiction|5|true|1
+		2|Twilight|2|false|1
+		3|Game of Thrones|4|true|2
+		4|Samurai Champloo|4|true|2
+
+
+2. Update an item that meets some condition (you can choose a condition that makes sense).
+
+	Input:
+		UPDATE media SET rating=5 WHERE name="Game of Thrones";
+	Output:
+		N/A
+
+3. Display the information in both tables using one query.
+
+	Input:
+		SELECT * FROM media, type WHERE media.type_id = type.id;
+	Output:
+		1|Pulp Fiction|5|true|1|1|Movie
+		2|Twilight|2|false|1|1|Movie
+		3|Game of Thrones|5|true|2|2|TV
+		4|Samurai Champloo|4|true|2|2|TV
+
+4. Display a narrower selection of columns (fewer columns than all of them, in other words) from both tables using one query.
+
+	Input:
+		SELECT media.name, media.rating, type.media_type FROM media JOIN type ON media.type_id = type.id;
+	Output:
+		Pulp Fiction|5|Movie
+		Twilight|2|Movie
+		Game of Thrones|5|TV
+		Samurai Champloo|4|TV
+
+
+5. Delete an item that meets some condition (you can choose a condition that makes sense).
+
+	Input:
+		DELETE FROM media WHERE name="Twilight";
+	Output:
+		N/A;
+
+
+Release 3. Try different JOIN commands - *these would be easier to destinguish if my tables were set up differently*
+
+# Inner Join: (Shows intersection of matching values)
+	Input: SELECT media.name, media.rating, type.media_type FROM media INNER JOIN type ON media.type_id = type.id;
+	Output:
+		Pulp Fiction|5|Movie
+		Game of Thrones|5|TV
+		Samurai Champloo|4|TV
+
+# Left Join: (Shows all records from table A and all matching records in table B)
+	Input: SELECT media.name, media.rewatchable, type.media_type FROM media LEFT JOIN type ON media.type_id = type.id;
+	Output:
+		Pulp Fiction|true|Movie
+		Game of Thrones|true|TV
+		Samurai Champloo|true|TV
+
+# Right Join: (Shows all records from table B and all matching records in table A)
+	Input: SELECT media.name, media.rating, type.media_type FROM media RIGHT JOIN type ON media.type_id = type.id;
+	Output: Error: RIGHT and FULL OUTER JOINs are not currently supported   # (?)
+
+# Full Join: (shows all records from table A and B)
+	Input: SELECT media.name, media.rating, type.media_type FROM media FULL JOIN type ON media.type_id = type.id;
+	Output: Error: RIGHT and FULL OUTER JOINs are not currently supported    # (?)
+
+
